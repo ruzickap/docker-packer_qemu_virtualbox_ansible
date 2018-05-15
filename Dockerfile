@@ -3,8 +3,6 @@ LABEL MAINTAINER="Petr Ruzicka <petr.ruzicka@gmail.com>"
 
 # VNC access to the virtual machine (https://www.packer.io/docs/builders/qemu.html#vnc_port_min)
 EXPOSE 5999
-# HTTP server started to serve the http_directory (https://www.packer.io/docs/builders/qemu.html#http_port_min)
-EXPOSE 8099
 # SSH port on the host machine which is forwarded to the SSH port on the guest machine (https://www.packer.io/docs/builders/qemu.html#ssh_host_port_min)
 EXPOSE 2299
 
