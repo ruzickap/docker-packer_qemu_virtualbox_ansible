@@ -55,7 +55,7 @@ NAME="my_centos-7-x86_64"
 CENTOS_VERSION="7"
 CENTOS_TYPE="NetInstall"
 CENTOS_TAG="1804"
-docker run -e NAME=$NAME -e CENTOS_VERSION=$CENTOS_VERSION -e CENTOS_TYPE=$CENTOS_TYPE -e CENTOS_TAG=$CENTOS_TAG --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu my_centos-7.json
+docker run -p 2299:2299 -e NAME=$NAME -e CENTOS_VERSION=$CENTOS_VERSION -e CENTOS_TYPE=$CENTOS_TYPE -e CENTOS_TAG=$CENTOS_TAG --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu my_centos-7.json
 ```
 
 ### Build Ubuntu image
@@ -64,21 +64,21 @@ docker run -e NAME=$NAME -e CENTOS_VERSION=$CENTOS_VERSION -e CENTOS_TYPE=$CENTO
 NAME="ubuntu-18.04-server-amd64"
 UBUNTU_CODENAME="bionic"
 
-docker run -e NAME=$NAME -e UBUNTU_CODENAME=$UBUNTU_CODENAME --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu ubuntu-server.json
+docker run -p 2299:2299 -e NAME=$NAME -e UBUNTU_CODENAME=$UBUNTU_CODENAME --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu ubuntu-server.json
 ```
 
 ```
 NAME="ubuntu-16.04-server-amd64"
 UBUNTU_CODENAME="xenial"
 
-docker run -e NAME=$NAME -e UBUNTU_CODENAME=$UBUNTU_CODENAME --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu ubuntu-server.json
+docker run -p 2299:2299 -e NAME=$NAME -e UBUNTU_CODENAME=$UBUNTU_CODENAME --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu ubuntu-server.json
 ```
 
 ```
 NAME=ubuntu-18.04-desktop-amd64
 UBUNTU_CODENAME=bionic
 
-docker run -e NAME=$NAME -e UBUNTU_CODENAME=$UBUNTU_CODENAME --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu ubuntu-desktop.json
+docker run -p 2299:2299 -e NAME=$NAME -e UBUNTU_CODENAME=$UBUNTU_CODENAME --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu ubuntu-desktop.json
 ```
 
 ### Build Windows image
@@ -89,9 +89,9 @@ WINDOWS_VERSION="10"
 ISO_CHECKSUM="27e4feb9102f7f2b21ebdb364587902a70842fb550204019d1a14b120918e455"
 ISO_URL="https://software-download.microsoft.com/download/pr/17134.1.180410-1804.rs4_release_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
 
-test -f $ISO_DIR/virtio-win.iso || sudo curl https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso --output $ISO_DIR/virtio-win.iso
+test -f $ISO_DIR/virtio-win.iso || sudo curl -L https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso --output $ISO_DIR/virtio-win.iso
 
-docker run -e NAME=$NAME -e WINDOWS_VERSION=$WINDOWS_VERSION -e VIRTIO_WIN_ISO="packer_cache/virtio-win.iso" -e ISO_CHECKSUM=$ISO_CHECKSUM -e ISO_URL=$ISO_URL --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu windows.json
+docker run -p 5999:5999 -e NAME=$NAME -e WINDOWS_VERSION=$WINDOWS_VERSION -e VIRTIO_WIN_ISO="packer_cache/virtio-win.iso" -e ISO_CHECKSUM=$ISO_CHECKSUM -e ISO_URL=$ISO_URL --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu windows.json
 ```
 
 ```
@@ -99,9 +99,9 @@ NAME="windows-server-2016-standard-x64-eval"
 WINDOWS_VERSION="2016"
 ISO_CHECKSUM="1ce702a578a3cb1ac3d14873980838590f06d5b7101c5daaccbac9d73f1fb50f" ISO_URL="http://care.dlservice.microsoft.com/dl/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO"
 
-test -f $ISO_DIR/virtio-win.iso || sudo curl https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso --output $ISO_DIR/virtio-win.iso
+test -f $ISO_DIR/virtio-win.iso || sudo curl -L https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso --output $ISO_DIR/virtio-win.iso
 
-docker run -e NAME=$NAME -e WINDOWS_VERSION=$WINDOWS_VERSION -e VIRTIO_WIN_ISO="./packer_cache/virtio-win.iso" -e ISO_CHECKSUM=$ISO_CHECKSUM -e ISO_URL=$ISO_URL --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu windows.json
+docker run -p 5999:5999 -e NAME=$NAME -e WINDOWS_VERSION=$WINDOWS_VERSION -e VIRTIO_WIN_ISO="./packer_cache/virtio-win.iso" -e ISO_CHECKSUM=$ISO_CHECKSUM -e ISO_URL=$ISO_URL --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu windows.json
 ```
 
 ```
@@ -109,7 +109,7 @@ NAME="windows-server-2012-r2-standard-x64-eval"
 WINDOWS_VERSION="2012"
 ISO_CHECKSUM="6612b5b1f53e845aacdf96e974bb119a3d9b4dcb5b82e65804ab7e534dc7b4d5" ISO_URL="http://care.dlservice.microsoft.com/dl/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_SERVER_EVAL_EN-US-IR3_SSS_X64FREE_EN-US_DV9.ISO"
 
-test -f $ISO_DIR/virtio-win.iso || sudo curl https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso --output $ISO_DIR/virtio-win.iso
+test -f $ISO_DIR/virtio-win.iso || sudo curl -L https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso --output $ISO_DIR/virtio-win.iso
 
-docker run -e NAME=$NAME -e WINDOWS_VERSION=$WINDOWS_VERSION -e VIRTIO_WIN_ISO="./packer_cache/virtio-win.iso" -e ISO_CHECKSUM=$ISO_CHECKSUM -e ISO_URL=$ISO_URL --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu windows.json
+docker run -p 5999:5999 -e NAME=$NAME -e WINDOWS_VERSION=$WINDOWS_VERSION -e VIRTIO_WIN_ISO="./packer_cache/virtio-win.iso" -e ISO_CHECKSUM=$ISO_CHECKSUM -e ISO_URL=$ISO_URL --rm -it --privileged --cap-add=ALL -v /lib/modules:/lib/modules:ro -v $PACKER_TEMPLATES_DIR:/var/tmp/packer-templates/ -v $ISO_DIR:/var/tmp/packer-templates/packer_cache/ peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu windows.json
 ```
