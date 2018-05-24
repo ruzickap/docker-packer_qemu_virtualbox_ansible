@@ -2,6 +2,6 @@
 
 # https://github.com/boxboat/fixuid
 
-eval $( fixuid )
+eval $( fixuid -q )
 
 /usr/local/bin/packer $*
