@@ -12,7 +12,7 @@ RUN addgroup --gid 1001 docker && \
     adduser --uid 1001 --ingroup docker --home /home/docker --shell /bin/sh --disabled-password --gecos "" docker
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl git jq python3-boto3 python3-cffi-backend python3-jinja2 python3-paramiko python3-pip python3-pyasn1 python3-setuptools python3-wheel python3-winrm python3-yaml qemu-kvm qemu-utils unzip virtualbox virtualbox-qt \
+    && apt-get install -y --no-install-recommends curl git jq python3-boto3 python3-cffi-backend python3-jinja2 python3-paramiko python3-pip python3-pyasn1 python3-setuptools python3-wheel python3-winrm python3-yaml qemu-kvm qemu-utils unzip virtualbox-qt \
     \
     && pip3 install ansible \
     \
