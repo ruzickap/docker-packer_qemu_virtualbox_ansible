@@ -4,4 +4,4 @@
 
 eval $( fixuid -q )
 
-/usr/local/bin/packer $*
+/usr/local/bin/packer "$@"
