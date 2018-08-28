@@ -70,8 +70,8 @@ docker run --rm -it --privileged -u $(id -u):$(id -g) \
 -e CENTOS_TAG=$CENTOS_TAG \
 -e PACKER_IMAGES_OUTPUT_DIR=/var/tmp/ \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
--v $PACKER_TEMPLATES_DIR:/home/docker/packer
--v $ISO_DIR:/home/docker/packer/packer_cache
+-v $PACKER_TEMPLATES_DIR:/home/docker/packer \
+-v $ISO_DIR:/home/docker/packer/packer_cache \
 peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu my_centos-7.json
 ```
 
@@ -185,7 +185,7 @@ docker run --rm -it --privileged -u $(id -u):$(id -g) \
 -e ISO_URL=$ISO_URL \
 -e PACKER_IMAGES_OUTPUT_DIR=/var/tmp/ \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
--v $PACKER_TEMPLATES_DIR:/home/docker/packer
--v $ISO_DIR:/home/docker/packer/packer_cache
+-v $PACKER_TEMPLATES_DIR:/home/docker/packer \
+-v $ISO_DIR:/home/docker/packer/packer_cache \
 peru/packer_qemu_virtualbox_ansible build -var headless=true -only=qemu windows.json
 ```
