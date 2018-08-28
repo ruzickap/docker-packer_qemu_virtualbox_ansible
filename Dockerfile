@@ -3,11 +3,6 @@ LABEL MAINTAINER="Petr Ruzicka <petr.ruzicka@gmail.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# VNC/VRDP access to the virtual machine (https://www.packer.io/docs/builders/qemu.html#vnc_port_min) (https://www.packer.io/docs/builders/virtualbox-iso.html#vrdp_port_min)
-EXPOSE 5999
-# SSH port on the host machine which is forwarded to the SSH port on the guest machine (https://www.packer.io/docs/builders/qemu.html#ssh_host_port_min)
-EXPOSE 2299
-
 RUN addgroup --gid 1001 docker && \
     adduser --uid 1001 --ingroup docker --home /home/docker --shell /bin/sh --disabled-password --gecos "" docker
 
@@ -22,7 +17,8 @@ RUN set -x \
     && unzip /tmp/packer_linux_amd64.zip -d /usr/local/bin/ \
     && rm -f /tmp/packer_linux_amd64.zip \
     \
-    && curl -SsL https://github.com/boxboat/fixuid/releases/download/v0.4/fixuid-0.4-linux-amd64.tar.gz | tar -C /usr/local/bin -xzf - \
+    && FIXUID_VERSION=$(curl --silent "https://api.github.com/repos/boxboat/fixuid/releases/latest" | sed -n 's/.*"tag_name": "v\([^"]*\)",/\1/p') \
+    && curl -SsL https://github.com/boxboat/fixuid/releases/download/v${FIXUID_VERSION}/fixuid-${FIXUID_VERSION}-linux-amd64.tar.gz | tar -C /usr/local/bin -xzf - \
     && chown root:root /usr/local/bin/fixuid \
     && chmod 4755 /usr/local/bin/fixuid \
     && mkdir -p /etc/fixuid \
