@@ -10,7 +10,7 @@ RUN set -x \
     && apt-get update \
     && apt-get install -y --no-install-recommends curl git jq python3-boto3 python3-cffi-backend python3-jinja2 python3-paramiko python3-pip python3-pyasn1 python3-setuptools python3-wheel python3-winrm python3-yaml qemu-kvm qemu-utils unzip virtualbox-qt \
     \
-    && pip3 install ansible \
+    && pip3 install --no-cache-dir ansible \
     \
     && PACKER_LATEST_VERSION=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/packer | jq -r -M '.current_version') \
     && curl https://releases.hashicorp.com/packer/${PACKER_LATEST_VERSION}/packer_${PACKER_LATEST_VERSION}_linux_amd64.zip --output /tmp/packer_linux_amd64.zip \
