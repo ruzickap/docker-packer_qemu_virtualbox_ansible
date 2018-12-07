@@ -69,11 +69,13 @@ export NAME="my_centos-7-x86_64"
 export CENTOS_VERSION="7"
 export CENTOS_TYPE="NetInstall"
 export CENTOS_TAG="1804"
+export PACKER_RUN_TIMEOUT="7200"  # keep build running for max 2 hours
 
 docker run --rm -it -u $(id -u):$(id -g) --privileged --name "packer_${NAME}" \
 -v $PACKER_IMAGES_OUTPUT_DIR:/home/docker/packer_images_output_dir \
 -v $PWD:/home/docker/packer \
 -v $TMPDIR:/home/docker/packer/packer_cache \
+-e PACKER_RUN_TIMEOUT \
 -e NAME -e CENTOS_VERSION -e CENTOS_TYPE -e CENTOS_TAG \
 -e PACKER_IMAGES_OUTPUT_DIR=/home/docker/packer_images_output_dir \
 peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true my_centos-7.json
