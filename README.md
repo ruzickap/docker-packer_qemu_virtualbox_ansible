@@ -17,7 +17,7 @@ sudo apt update
 sudo apt install -y --no-install-recommends curl git docker.io virtualbox
 sudo gpasswd -a ${USER} docker
 # This is mandatory for Ubuntu otherwise docker container will not have access to /dev/kvm - this is default in Fedora (https://bugzilla.redhat.com/show_bug.cgi?id=993491)
-echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666"' > /etc/udev/rules.d/60-qemu-system-common.rules
+sudo bash -c "echo 'KERNEL==\"kvm\", GROUP=\"kvm\", MODE=\"0666\"' > /etc/udev/rules.d/60-qemu-system-common.rules"
 sudo reboot
 ```
 
