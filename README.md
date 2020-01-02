@@ -1,14 +1,22 @@
-# Dockerfile with Packer, QEMU, VirtualBox, Ansible (with winrm and boto3 Python modules)
+# Dockerfile with Packer, QEMU, VirtualBox, Ansible (with winrm Python module)
 
-[![Docker Hub; peru/packer_qemu_virtualbox_ansible](https://img.shields.io/badge/dockerhub-peru%2Fpacker_qemu_virtualbox_ansible-green.svg)](https://registry.hub.docker.com/u/peru/packer_qemu_virtualbox_ansible)[![Size](https://images.microbadger.com/badges/image/peru/packer_qemu_virtualbox_ansible.svg)](https://microbadger.com/images/peru/packer_qemu_virtualbox_ansible)[![Docker pulls](https://img.shields.io/docker/pulls/peru/packer_qemu_virtualbox_ansible.svg)](https://hub.docker.com/r/peru/packer_qemu_virtualbox_ansible/)[![Docker Build](https://img.shields.io/docker/automated/peru/packer_qemu_virtualbox_ansible.svg)](https://hub.docker.com/r/peru/packer_qemu_virtualbox_ansible/)
+[![Docker Hub; peru/packer_qemu_virtualbox_ansible](https://img.shields.io/badge/dockerhub-peru%2Fpacker_qemu_virtualbox_ansible-green.svg)](https://registry.hub.docker.com/u/peru/packer_qemu_virtualbox_ansible)
+[![Size](https://images.microbadger.com/badges/image/peru/packer_qemu_virtualbox_ansible.svg)](https://microbadger.com/images/peru/packer_qemu_virtualbox_ansible)
+[![Docker pulls](https://img.shields.io/docker/pulls/peru/packer_qemu_virtualbox_ansible.svg)](https://hub.docker.com/r/peru/packer_qemu_virtualbox_ansible/)
+[![Docker Build](https://img.shields.io/docker/automated/peru/packer_qemu_virtualbox_ansible.svg)](https://hub.docker.com/r/peru/packer_qemu_virtualbox_ansible/)
 
-This repository provides Dockerfile which can be used to build images for Virtual Machines by Packer.
+This repository provides Dockerfile which can be used to build images
+for Virtual Machines by Packer.
 
-The docker image is primary created for building Packer Templates located in this repository [https://github.com/ruzickap/packer-templates](https://github.com/ruzickap/packer-templates), but it can be used everywhere.
+The docker image is primary created for building Packer Templates located
+in this repository [https://github.com/ruzickap/packer-templates](https://github.com/ruzickap/packer-templates),
+but it can be used everywhere.
 
 ## Installation steps
 
-To use this Docker image you need to install VirtualBox and Docker to your OS (Fedora / Ubuntu). This may work on other operating systems too, but I didn't have a chance to test it.
+To use this Docker image you need to install VirtualBox and Docker to your OS
+(Fedora / Ubuntu). This may work on other operating systems too, but I didn't
+have a chance to test it.
 
 ### Ubuntu installation steps (Docker + Virtualbox)
 
