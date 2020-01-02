@@ -18,7 +18,7 @@ To use this Docker image you need to install VirtualBox and Docker to your OS
 (Fedora / Ubuntu). This may work on other operating systems too, but I didn't
 have a chance to test it.
 
-### Ubuntu installation steps (Docker + Virtualbox)
+### Ubuntu installation steps (Docker + VirtualBox)
 
 ```bash
 sudo apt update
@@ -29,7 +29,7 @@ sudo bash -c "echo 'KERNEL==\"kvm\", GROUP=\"kvm\", MODE=\"0666\"' > /etc/udev/r
 sudo reboot
 ```
 
-### Fedora installation steps (Docker + Virtualbox)
+### Fedora installation steps (Docker + VirtualBox)
 
 ```bash
 sudo sed -i 's@^SELINUX=enforcing@SELINUX=disabled@' /etc/selinux/config
@@ -51,7 +51,7 @@ sudo reboot
 ## Build image from Packer templates
 
 Real example how to use the Docker image to build Packer images for libvirt/qemu.
-You can replace `-only=qemu` by `-only=virtualbox-iso` to build virtualbox images.
+You can replace `-only=qemu` by `-only=virtualbox-iso` to build VirtualBox images.
 
 You can see the console of virtual machine by turning on `-var headless=false`.
 (It will connect the "X GUI" from the docker to your X server)
@@ -145,7 +145,7 @@ peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true ubuntu-d
 
 #### Common mandatory part for all Windows images
 
-Download the VirtIO driver iso file:
+Download the VirtIO driver image file:
 
 ```bash
 export VIRTIO_WIN_ISO="packer_cache/virtio-win.iso"
