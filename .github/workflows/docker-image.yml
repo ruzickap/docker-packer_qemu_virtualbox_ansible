@@ -7,7 +7,7 @@ on:
       - Dockerfile
       - .dockerignore
       - .hadolint.yaml
-      - entrypoint.sh
+      - startup_script.sh
       - .github/workflows/docker-image.yml
   push:
     branches:
@@ -16,7 +16,7 @@ on:
       - Dockerfile
       - .dockerignore
       - .hadolint.yaml
-      - entrypoint.sh
+      - startup_script.sh
       - .github/workflows/docker-image.yml
 
 jobs:
