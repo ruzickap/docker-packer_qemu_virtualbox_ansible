@@ -158,13 +158,12 @@ wget -c https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-
 export NAME="my_windows-10-enterprise-x64-eval"
 export WINDOWS_VERSION="10"
 export ISO_URL="https://software-download.microsoft.com/download/pr/17763.1.180914-1434.rs5_release_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
-export ISO_CHECKSUM="a37718a13ecff4e8497e8feef50e4c91348e97c6bfe93474e364c9d03ad381a2"
 
 docker run --rm -it -u $(id -u):$(id -g) --privileged --name "packer_${NAME}" \
 -v $PACKER_IMAGES_OUTPUT_DIR:/home/docker/packer_images_output_dir \
 -v $PWD:/home/docker/packer \
 -v $TMPDIR:/home/docker/packer/packer_cache \
--e NAME -e WINDOWS_VERSION -e ISO_URL -e ISO_CHECKSUM -e VIRTIO_WIN_ISO \
+-e NAME -e WINDOWS_VERSION -e ISO_URL -e VIRTIO_WIN_ISO \
 -e PACKER_IMAGES_OUTPUT_DIR=/home/docker/packer_images_output_dir \
 peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true windows.json
 ```
@@ -174,14 +173,13 @@ peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true windows.
 ```bash
 export NAME="windows-server-2019-standard-x64-eval"
 export WINDOWS_VERSION="2019"
-export ISO_CHECKSUM="dbb0ffbab5d114ce7370784c4e24740191fefdb3349917c77a53ff953dd10f72"
 export ISO_URL="https://software-download.microsoft.com/download/pr/17763.1.180914-1434.rs5_release_SERVER_EVAL_x64FRE_en-us.iso"
 
 docker run --rm -it -u $(id -u):$(id -g) --privileged --name "packer_${NAME}" \
 -v $PACKER_IMAGES_OUTPUT_DIR:/home/docker/packer_images_output_dir \
 -v $PWD:/home/docker/packer \
 -v $TMPDIR:/home/docker/packer/packer_cache \
--e NAME -e WINDOWS_VERSION -e ISO_URL -e ISO_CHECKSUM -e VIRTIO_WIN_ISO \
+-e NAME -e WINDOWS_VERSION -e ISO_URL -e VIRTIO_WIN_ISO \
 -e PACKER_IMAGES_OUTPUT_DIR=/home/docker/packer_images_output_dir \
 peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true windows.json
 ```
@@ -191,14 +189,13 @@ peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true windows.
 ```bash
 export NAME="windows-server-2016-standard-x64-eval"
 export WINDOWS_VERSION="2016"
-export ISO_CHECKSUM="1ce702a578a3cb1ac3d14873980838590f06d5b7101c5daaccbac9d73f1fb50f"
 export ISO_URL="https://software-download.microsoft.com/download/pr/Windows_Server_2016_Datacenter_EVAL_en-us_14393_refresh.ISO"
 
 docker run --rm -it -u $(id -u):$(id -g) --privileged --name "packer_${NAME}" \
 -v $PACKER_IMAGES_OUTPUT_DIR:/home/docker/packer_images_output_dir \
 -v $PWD:/home/docker/packer \
 -v $TMPDIR:/home/docker/packer/packer_cache \
--e NAME -e WINDOWS_VERSION -e ISO_URL -e ISO_CHECKSUM -e VIRTIO_WIN_ISO \
+-e NAME -e WINDOWS_VERSION -e ISO_URL -e VIRTIO_WIN_ISO \
 -e PACKER_IMAGES_OUTPUT_DIR=/home/docker/packer_images_output_dir \
 peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true windows.json
 ```
@@ -208,14 +205,13 @@ peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true windows.
 ```bash
 export NAME="windows-server-2012-r2-standard-x64-eval"
 export WINDOWS_VERSION="2012"
-export ISO_CHECKSUM="6612b5b1f53e845aacdf96e974bb119a3d9b4dcb5b82e65804ab7e534dc7b4d5"
 export ISO_URL="http://care.dlservice.microsoft.com/dl/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_SERVER_EVAL_EN-US-IR3_SSS_X64FREE_EN-US_DV9.ISO"
 
 docker run --rm -it -u $(id -u):$(id -g) --privileged --name "packer_${NAME}" \
 -v $PACKER_IMAGES_OUTPUT_DIR:/home/docker/packer_images_output_dir \
 -v $PWD:/home/docker/packer \
 -v $TMPDIR:/home/docker/packer/packer_cache \
--e NAME -e WINDOWS_VERSION -e ISO_URL -e ISO_CHECKSUM -e VIRTIO_WIN_ISO \
+-e NAME -e WINDOWS_VERSION -e ISO_URL -e VIRTIO_WIN_ISO \
 -e PACKER_IMAGES_OUTPUT_DIR=/home/docker/packer_images_output_dir \
 peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true windows.json
 ```
