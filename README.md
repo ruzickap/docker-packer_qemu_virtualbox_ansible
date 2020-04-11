@@ -98,13 +98,13 @@ peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true my_cento
 export NAME="ubuntu-18.04-server-amd64"
 export UBUNTU_TYPE="server"
 export UBUNTU_VERSION="18.04"
-export UBUNTU_CODENAME="bionic"
+export UBUNTU_IMAGES_URL="http://archive.ubuntu.com/ubuntu/dists/bionic-updates/main/installer-amd64/current/images/"
 
 docker run --rm -it -u $(id -u):$(id -g) --privileged --name "packer_${NAME}" \
 -v $PACKER_IMAGES_OUTPUT_DIR:/home/docker/packer_images_output_dir \
 -v $PWD:/home/docker/packer \
 -v $TMPDIR:/home/docker/packer/packer_cache \
--e NAME -e UBUNTU_TYPE -e UBUNTU_VERSION -e UBUNTU_CODENAME \
+-e NAME -e UBUNTU_TYPE -e UBUNTU_VERSION -e UBUNTU_IMAGES_URL \
 -e PACKER_IMAGES_OUTPUT_DIR=/home/docker/packer_images_output_dir \
 peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true ubuntu-server.json
 ```
@@ -113,13 +113,13 @@ peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true ubuntu-s
 export NAME="ubuntu-16.04-server-amd64"
 export UBUNTU_TYPE="server"
 export UBUNTU_VERSION="16.04"
-export UBUNTU_CODENAME="xenial"
+export UBUNTU_IMAGES_URL="http://archive.ubuntu.com/ubuntu/dists/xenial-updates/main/installer-amd64/current/images/"
 
 docker run --rm -it -u $(id -u):$(id -g) --privileged --name "packer_${NAME}" \
 -v $PACKER_IMAGES_OUTPUT_DIR:/home/docker/packer_images_output_dir \
 -v $PWD:/home/docker/packer \
 -v $TMPDIR:/home/docker/packer/packer_cache \
--e NAME -e UBUNTU_TYPE -e UBUNTU_VERSION -e UBUNTU_CODENAME \
+-e NAME -e UBUNTU_TYPE -e UBUNTU_VERSION -e UBUNTU_IMAGES_URL \
 -e PACKER_IMAGES_OUTPUT_DIR=/home/docker/packer_images_output_dir \
 peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true ubuntu-server.json
 ```
@@ -130,13 +130,13 @@ peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true ubuntu-s
 export NAME="ubuntu-18.04-desktop-amd64"
 export UBUNTU_TYPE="desktop"
 export UBUNTU_VERSION="18.04"
-export UBUNTU_CODENAME="bionic"
+export UBUNTU_IMAGES_URL="http://archive.ubuntu.com/ubuntu/dists/bionic-updates/main/installer-amd64/current/images/"
 
 docker run --rm -it -u $(id -u):$(id -g) --privileged --name "packer_${NAME}" \
 -v $PACKER_IMAGES_OUTPUT_DIR:/home/docker/packer_images_output_dir \
 -v $PWD:/home/docker/packer \
 -v $TMPDIR:/home/docker/packer/packer_cache \
--e NAME -e UBUNTU_TYPE -e UBUNTU_VERSION -e UBUNTU_CODENAME \
+-e NAME -e UBUNTU_TYPE -e UBUNTU_VERSION -e UBUNTU_IMAGES_URL \
 -e PACKER_IMAGES_OUTPUT_DIR=/home/docker/packer_images_output_dir \
 peru/packer_qemu_virtualbox_ansible build -only=qemu -var headless=true ubuntu-desktop.json
 ```
