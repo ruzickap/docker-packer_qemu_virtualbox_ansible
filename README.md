@@ -67,7 +67,7 @@ git clone --recurse-submodules $PACKER_TEMPLATES_GIT
 cd packer-templates
 TMPDIR="$PWD/packer_cache"
 
-test -d $TMPDIR || mkdir -v $TMPDIR
+test -d $TMPDIR                   || mkdir -v $TMPDIR
 test -d $PACKER_IMAGES_OUTPUT_DIR || mkdir -v $PACKER_IMAGES_OUTPUT_DIR
 ```
 

@@ -23,11 +23,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: markdownlint-cli
-        uses: nosborn/github-action-markdown-cli@v1.1.1
+      - name: Markdown Lint
+        uses: ruzickap/action-my-markdown-linter@v1
         with:
-          files: .
-          config_file: .markdownlint.yml
+          exclude: |
+            CHANGELOG.md
 
   markdown-spell-check:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
         run: npm install -g markdown-spellcheck
 
       - name: Run mdspell
-        run: find . -type f -name "*.md" | xargs --max-args=1 --verbose  mdspell --ignore-numbers --ignore-acronyms --report --en-gb
+        run: find . -type f \( -name "*.md" ! -name "CHANGELOG.md" \) | xargs --max-args=1 --verbose mdspell --ignore-numbers --ignore-acronyms --report --en-gb
 
   markdown-link-check:
     runs-on: ubuntu-latest
