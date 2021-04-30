@@ -46,4 +46,5 @@ jobs:
         uses: github/super-linter@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_JSCPD: false
           LINTER_RULES_PATH: .
