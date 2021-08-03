@@ -1,7 +1,6 @@
 # Dockerfile with Packer, QEMU, VirtualBox, Ansible (with winrm Python module)
 
 [![Docker Hub; peru/packer_qemu_virtualbox_ansible](https://img.shields.io/badge/dockerhub-peru%2Fpacker_qemu_virtualbox_ansible-green.svg)](https://registry.hub.docker.com/u/peru/packer_qemu_virtualbox_ansible)
-[![Size](https://images.microbadger.com/badges/image/peru/packer_qemu_virtualbox_ansible.svg)](https://microbadger.com/images/peru/packer_qemu_virtualbox_ansible)
 [![Docker pulls](https://img.shields.io/docker/pulls/peru/packer_qemu_virtualbox_ansible.svg)](https://hub.docker.com/r/peru/packer_qemu_virtualbox_ansible/)
 [![Docker Build](https://img.shields.io/docker/automated/peru/packer_qemu_virtualbox_ansible.svg)](https://hub.docker.com/r/peru/packer_qemu_virtualbox_ansible/)
 
